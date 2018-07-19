@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Swoosh</string>
+
     <string name="background_image">background image</string>
     <string name="app_logo">app logo</string>
     <string name="desired_league">Desired League:</string>
@@ -16,4 +17,6 @@
     <string name="baller">Baller</string>
     <string name="finish">Finish</string>
     <string name="search_league">Looking for a co-ed beginner near you...</string>
+    <string name="title_activity_locate_player_maps">Map</string>
+
 </resources>
