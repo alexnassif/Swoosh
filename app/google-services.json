@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "900877121858",
+    "firebase_url": "https://tennisbro-547af.firebaseio.com",
+    "project_id": "tennisbro-547af",
+    "storage_bucket": "tennisbro-547af.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:900877121858:android:b7068e57e061a52e",
+        "android_client_info": {
+          "package_name": "com.alexnassif.mobile.tennisbro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "900877121858-ffs9hfp8ot7i77h6fiq9rodjc909gros.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3sg2BeYmY7k_S0sDFeVVYhCrw2sU9ck0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

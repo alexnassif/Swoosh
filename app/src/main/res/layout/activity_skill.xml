@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.alexnassif.mobile.swoosh.Controller.SkillActivity">
+    tools:context=".Controller.SkillActivity">
 
 
     <ImageView
@@ -50,6 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -75,18 +76,34 @@
             tools:layout_marginRight="16dp" />
 
         <ToggleButton
-            android:id="@+id/ballerSkillBtn"
+            android:id="@+id/moderateSkillBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/swoosh_toggle"
             android:fontFamily="@font/montserrat"
             android:onClick="onBallerClick"
-            android:text="@string/baller"
+            android:text="@string/moderate"
             android:textColor="@android:color/white"
-            android:textOff="@string/baller"
-            android:textOn="@string/baller"
+            android:textOff="@string/moderate"
+            android:textOn="@string/moderate"
             tools:layout_marginLeft="16dp" />
+
+        <ToggleButton
+            android:id="@+id/advancedSkillBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/swoosh_toggle"
+            android:fontFamily="@font/montserrat"
+            android:onClick="onBallerClick"
+            android:text="@string/advanced"
+            android:textColor="@android:color/white"
+            android:textOff="@string/advanced"
+            android:textOn="@string/advanced"
+            tools:layout_marginLeft="16dp" />
+
+
     </LinearLayout>
 
     <Button
@@ -104,5 +121,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+
 
 </android.support.constraint.ConstraintLayout>

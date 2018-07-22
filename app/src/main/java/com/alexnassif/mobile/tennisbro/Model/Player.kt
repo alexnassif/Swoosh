@@ -1,4 +1,4 @@
-package com.alexnassif.mobile.swoosh.Model
+package com.alexnassif.mobile.tennisbro.Model
 
 import android.os.Parcel
 import android.os.Parcelable

@@ -1,9 +1,11 @@
-package com.alexnassif.mobile.swoosh.Controller
+package com.alexnassif.mobile.tennisbro.Controller
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.alexnassif.mobile.swoosh.R
+import com.alexnassif.mobile.tennisbro.LocatePlayerMapsActivity
+
+import com.alexnassif.mobile.tennisbro.R
 import kotlinx.android.synthetic.main.activity_welcome.*
 
 class WelcomeActivity : AppCompatActivity() {
