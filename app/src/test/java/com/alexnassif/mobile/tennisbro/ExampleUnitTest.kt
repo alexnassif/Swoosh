@@ -1,4 +1,4 @@
-package com.alexnassif.mobile.swoosh
+package com.alexnassif.mobile.tennisbro
 
 import org.junit.Test
 

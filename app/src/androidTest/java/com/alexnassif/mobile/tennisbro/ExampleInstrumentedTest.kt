@@ -1,4 +1,4 @@
-package com.alexnassif.mobile.swoosh
+package com.alexnassif.mobile.tennisbro
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("com.alexnassif.mobile.swoosh", appContext.packageName)
+        assertEquals("com.alexnassif.mobile.tennisbro", appContext.packageName)
     }
 }

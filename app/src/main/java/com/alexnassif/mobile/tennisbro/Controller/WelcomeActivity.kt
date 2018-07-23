@@ -18,5 +18,10 @@ class WelcomeActivity : AppCompatActivity() {
             val leagueIntent = Intent(this, LeagueActivity::class.java)
             startActivity(leagueIntent)
         }
+
+        loginBtn.setOnClickListener{
+            val mapIntent = Intent(this, LocatePlayerMapsActivity::class.java)
+            startActivity(mapIntent)
+        }
     }
 }
