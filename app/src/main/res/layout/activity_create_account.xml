@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controller.LoginActivity">
+    tools:context=".CreateAccountActivity">
+
 
     <ImageView
-        android:id="@+id/loginImageView"
+        android:id="@+id/createAccountImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
@@ -18,7 +19,7 @@
         app:srcCompat="@drawable/beginnerballerbg" />
 
     <EditText
-        android:id="@+id/loginEmailText"
+        android:id="@+id/createEmailText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
@@ -34,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/loginPasswordText"
+        android:id="@+id/createPasswordText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
@@ -46,10 +47,10 @@
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginEmailText" />
+        app:layout_constraintTop_toBottomOf="@+id/createEmailText" />
 
     <Button
-        android:id="@+id/loginLoginBtn"
+        android:id="@+id/createAccountBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
@@ -57,18 +58,19 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/swoosh_button"
         android:fontFamily="@font/montserrat"
-        android:onClick="loginLoginBtnClicked"
-        android:text="Login"
+        android:onClick="createAccountBtnClicked"
+        android:text="Create Account"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginPasswordText" />
+        app:layout_constraintTop_toBottomOf="@+id/createPasswordText" />
 
     <ProgressBar
-        android:id="@+id/loginSpinner"
+        android:id="@+id/createAccountSpinner"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

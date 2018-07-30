@@ -14,9 +14,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-    fun loginCreateUserBtnClicked(view: View){
-
-    }
 
     fun loginLoginBtnClicked(view: View){
 
