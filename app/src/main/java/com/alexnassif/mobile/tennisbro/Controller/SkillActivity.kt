@@ -33,13 +33,20 @@ class SkillActivity : AppCompatActivity() {
         }
     }
     fun onBeginnerClick(view: View){
-
+        moderateSkillBtn.isChecked = false
+        advancedSkillBtn.isChecked = false
         player.skill = "beginner"
     }
 
-    fun onBallerClick(view: View){
+    fun onModerateClick(view: View){
         beginnerSkillBtn.isChecked = false
-        player.skill = "baller"
+        advancedSkillBtn.isChecked = false
+        player.skill = "moderate"
+    }
+    fun onAdvancedClick(view: View){
+        beginnerSkillBtn.isChecked = false
+        moderateSkillBtn.isChecked = false
+        player.skill = "moderate"
     }
 
     fun onFinishBtn(view: View){

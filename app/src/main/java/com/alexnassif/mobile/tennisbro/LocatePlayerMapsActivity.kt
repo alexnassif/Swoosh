@@ -179,3 +179,4 @@ class LocatePlayerMapsActivity : AppCompatActivity(), OnMapReadyCallback, Google
         private const val REQUEST_CHECK_SETTINGS = 2
     }
 }
+

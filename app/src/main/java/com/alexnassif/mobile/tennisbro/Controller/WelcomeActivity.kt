@@ -3,6 +3,7 @@ package com.alexnassif.mobile.tennisbro.Controller
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.content.ContextCompat.startActivity
 import com.alexnassif.mobile.tennisbro.CreateAccountActivity
 import com.alexnassif.mobile.tennisbro.LocatePlayerMapsActivity
 
@@ -18,21 +19,31 @@ class WelcomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_welcome)
 
         mAuth = FirebaseAuth.getInstance()
+
+        getStartedButton.setOnClickListener {
+            val createAccountIntent = Intent(this, CreateAccountActivity::class.java)
+            startActivity(createAccountIntent)
+        }
+
+        loginBtn.setOnClickListener {
+            val loginIntent = Intent(this, LoginActivity::class.java)
+            startActivity(loginIntent)
+        }
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+
         if(mAuth.currentUser != null){
             val mapIntent = Intent(this, LocatePlayerMapsActivity::class.java)
             startActivity(mapIntent)
         }
+    }
 
-        else {
-            getStartedButton.setOnClickListener {
-                val createAccountIntent = Intent(this, CreateAccountActivity::class.java)
-                startActivity(createAccountIntent)
-            }
+    override fun onDestroy() {
+        super.onDestroy()
 
-            loginBtn.setOnClickListener {
-                val loginIntent = Intent(this, LoginActivity::class.java)
-                startActivity(loginIntent)
-            }
-        }
+        FirebaseAuth.getInstance().signOut()
     }
 }
