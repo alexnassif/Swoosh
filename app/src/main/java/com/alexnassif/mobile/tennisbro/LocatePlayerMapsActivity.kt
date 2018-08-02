@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.util.Log
+import android.view.View
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 
@@ -24,7 +25,7 @@ class LocatePlayerMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
     private lateinit var mMap: GoogleMap
-
+    private lateinit var location: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,14 +42,20 @@ class LocatePlayerMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.getUiSettings().setZoomControlsEnabled(true)
         mMap.setOnCameraIdleListener {
 
-            Log.d("locationmiddle", mMap.cameraPosition.target.toString())
+            location = mMap.cameraPosition.target.toString()
         }
-        setUpMap()
+        //setUpMap()
     }
 
+    fun getLocationBtn(view: View){
 
+        val intent = Intent();
+        intent.putExtra("location", location)
+        setResult(Activity.RESULT_OK, intent)
+        finish()
+    }
 
-    private fun setUpMap() {
+    /*private fun setUpMap() {
         if (ActivityCompat.checkSelfPermission(this,
                         android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
@@ -56,7 +63,7 @@ class LocatePlayerMapsActivity : AppCompatActivity(), OnMapReadyCallback {
             return
         }
 
-    }
+    }*/
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
 

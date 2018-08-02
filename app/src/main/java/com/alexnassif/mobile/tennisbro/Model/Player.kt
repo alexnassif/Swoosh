@@ -6,8 +6,9 @@ import android.os.Parcelable
 /**
  * Created by raymond on 11/24/17.
  */
-class Player constructor(var league: String, var skill: String):Parcelable{
+class Player constructor(var league: String, var skill: String, var location: String):Parcelable{
     constructor(parcel: Parcel) : this(
+            parcel.readString(),
             parcel.readString(),
             parcel.readString()) {
     }
@@ -15,6 +16,7 @@ class Player constructor(var league: String, var skill: String):Parcelable{
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(league)
         parcel.writeString(skill)
+        parcel.writeString(location)
     }
 
     override fun describeContents(): Int {

@@ -17,6 +17,6 @@ class FinishActivity : AppCompatActivity() {
 
         val player = intent.getParcelableExtra<Player>(EXTRA_PLAYER)
 
-        searchLeagueText.text = "Looking for a ${player.league} ${player.skill} league near you..."
+        searchLeagueText.text = "Looking for a ${player.league} ${player.skill} in ${player.location}..."
     }
 }

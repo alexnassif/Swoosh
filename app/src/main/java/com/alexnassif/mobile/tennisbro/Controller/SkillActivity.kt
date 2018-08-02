@@ -1,10 +1,12 @@
 package com.alexnassif.mobile.tennisbro.Controller
 
+import android.app.Activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.alexnassif.mobile.tennisbro.LocatePlayerMapsActivity
 import com.alexnassif.mobile.tennisbro.Model.Player
 import com.alexnassif.mobile.tennisbro.R
 
@@ -49,6 +51,11 @@ class SkillActivity : AppCompatActivity() {
         player.skill = "moderate"
     }
 
+    fun setPlayerLocationBtn(view: View){
+        val finishIntent = Intent(this, LocatePlayerMapsActivity::class.java)
+        startActivityForResult(finishIntent, PICK_LOCATION)
+    }
+
     fun onFinishBtn(view: View){
 
         if(player.skill != "") {
@@ -58,5 +65,17 @@ class SkillActivity : AppCompatActivity() {
         }else{
             Toast.makeText(this, "Please select a skill level", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == PICK_LOCATION){
+
+            if(resultCode == Activity.RESULT_OK){
+                player.location = data!!.getStringExtra("location")
+            }
+        }
+    }
+    companion object {
+        private const val PICK_LOCATION = 1;
     }
 }

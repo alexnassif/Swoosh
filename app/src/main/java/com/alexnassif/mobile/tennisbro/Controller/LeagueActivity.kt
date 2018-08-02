@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_league.*
 class LeagueActivity : AppCompatActivity() {
 
 
-    var player = Player("", "")
+    var player = Player("", "", "")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_league)
