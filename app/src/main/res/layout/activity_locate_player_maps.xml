@@ -22,6 +22,8 @@
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="clickBall"
+        android:visibility="visible"
         map:layout_constraintBottom_toTopOf="@+id/map"
         map:layout_constraintEnd_toStartOf="@+id/map"
         map:layout_constraintHorizontal_bias="0.5"

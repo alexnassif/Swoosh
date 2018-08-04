@@ -36,7 +36,7 @@ class WelcomeActivity : AppCompatActivity() {
         super.onStart()
 
         if(mAuth.currentUser != null){
-            val mapIntent = Intent(this, LocatePlayerMapsActivity::class.java)
+            val mapIntent = Intent(this, ListPlayerMapActivity::class.java)
             startActivity(mapIntent)
         }
     }

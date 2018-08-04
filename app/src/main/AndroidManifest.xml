@@ -54,7 +54,10 @@
         <activity
             android:name=".Controller.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".CreateAccountActivity"></activity>
+        <activity android:name=".CreateAccountActivity" />
+        <activity
+            android:name=".Controller.ListPlayerMapActivity"
+            android:label="@string/title_activity_list_player_map"></activity>
     </application>
 
 </manifest>

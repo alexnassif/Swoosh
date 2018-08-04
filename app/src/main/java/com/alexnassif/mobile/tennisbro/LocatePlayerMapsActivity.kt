@@ -20,6 +20,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.auth.FirebaseAuth
 
 class LocatePlayerMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -46,7 +47,9 @@ class LocatePlayerMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         //setUpMap()
     }
-
+    fun clickBall(view: View){
+        FirebaseAuth.getInstance().signOut()
+    }
     fun getLocationBtn(view: View){
 
         val intent = Intent();
