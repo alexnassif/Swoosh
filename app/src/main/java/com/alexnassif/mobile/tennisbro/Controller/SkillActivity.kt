@@ -71,7 +71,9 @@ class SkillActivity : AppCompatActivity() {
         if (requestCode == PICK_LOCATION){
 
             if(resultCode == Activity.RESULT_OK){
-                player.location = data!!.getStringExtra("location")
+                player.latitude = data!!.getStringExtra("latitude")
+                player.longitude = data!!.getStringExtra("longitude")
+
             }
         }
     }

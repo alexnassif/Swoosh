@@ -26,7 +26,8 @@ class LocatePlayerMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
     private lateinit var mMap: GoogleMap
-    private lateinit var location: String
+    private lateinit var latitude: String
+    private lateinit var longitude: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +44,8 @@ class LocatePlayerMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.getUiSettings().setZoomControlsEnabled(true)
         mMap.setOnCameraIdleListener {
 
-            location = mMap.cameraPosition.target.toString()
+            latitude = mMap.cameraPosition.target.latitude.toString()
+            longitude = mMap.cameraPosition.target.longitude.toString()
         }
         //setUpMap()
     }
@@ -53,7 +55,8 @@ class LocatePlayerMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     fun getLocationBtn(view: View){
 
         val intent = Intent();
-        intent.putExtra("location", location)
+        intent.putExtra("latitude", latitude)
+        intent.putExtra("longitude", longitude)
         setResult(Activity.RESULT_OK, intent)
         finish()
     }

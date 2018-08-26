@@ -22,7 +22,7 @@ class FinishActivity : AppCompatActivity() {
 
         val player = intent.getParcelableExtra<Player>(EXTRA_PLAYER)
 
-        searchLeagueText.text = "creating user for a ${player.league} ${player.skill} in ${player.location}..."
+        searchLeagueText.text = "creating user for a ${player.league} ${player.skill} ..."
         progressBar.visibility = View.VISIBLE
         var database = FirebaseDatabase.getInstance()
         val createUserRef = database.getReference("users")
@@ -32,6 +32,9 @@ class FinishActivity : AppCompatActivity() {
                 if (p0 == null) {
                     progressBar.visibility = View.INVISIBLE
                     searchLeagueText.text = "user created"
+                    val listPlayersIntent = Intent(applicationContext, ListPlayerMapActivity::class.java)
+                    startActivity(listPlayersIntent)
+
                 }else{
                     searchLeagueText.text = "error"
                 }
