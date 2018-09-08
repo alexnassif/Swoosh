@@ -1,33 +1,23 @@
-package com.alexnassif.mobile.tennisbro
+package com.alexnassif.mobile.tennisbro.Controller
 
 import android.app.Activity
 import android.content.Intent
-import android.content.IntentSender
-import android.content.pm.PackageManager
-import android.location.Location
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat
-import android.util.Log
 import android.view.View
-import com.google.android.gms.common.api.ResolvableApiException
-import com.google.android.gms.location.*
+import com.alexnassif.mobile.tennisbro.R
 
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseAuth
 
 class LocatePlayerMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
     private lateinit var mMap: GoogleMap
-    private lateinit var latitude: String
-    private lateinit var longitude: String
+    private var latitude: Double = 0.0
+    private var longitude: Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,11 +31,11 @@ class LocatePlayerMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        mMap.getUiSettings().setZoomControlsEnabled(true)
+        mMap.uiSettings.isZoomControlsEnabled = true
         mMap.setOnCameraIdleListener {
 
-            latitude = mMap.cameraPosition.target.latitude.toString()
-            longitude = mMap.cameraPosition.target.longitude.toString()
+            latitude = mMap.cameraPosition.target.latitude
+            longitude = mMap.cameraPosition.target.longitude
         }
         //setUpMap()
     }

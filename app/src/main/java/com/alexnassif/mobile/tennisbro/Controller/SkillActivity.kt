@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.alexnassif.mobile.tennisbro.LocatePlayerMapsActivity
 import com.alexnassif.mobile.tennisbro.Model.Player
 import com.alexnassif.mobile.tennisbro.R
 
@@ -71,8 +70,8 @@ class SkillActivity : AppCompatActivity() {
         if (requestCode == PICK_LOCATION){
 
             if(resultCode == Activity.RESULT_OK){
-                player.latitude = data!!.getStringExtra("latitude")
-                player.longitude = data!!.getStringExtra("longitude")
+                player.latitude = data!!.getDoubleExtra("latitude", 0.0)
+                player.longitude = data!!.getDoubleExtra("longitude", 0.0)
 
             }
         }

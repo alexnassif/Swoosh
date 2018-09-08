@@ -1,9 +1,10 @@
 package com.alexnassif.mobile.tennisbro.Controller
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.alexnassif.mobile.tennisbro.PlayerListFragment
 import com.alexnassif.mobile.tennisbro.R
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_list_player.*
 
 class ListPlayerMapActivity : AppCompatActivity() {
@@ -28,6 +29,12 @@ class ListPlayerMapActivity : AppCompatActivity() {
                     .beginTransaction()
                     .replace(R.id.map_frame, PlayerListFragment())
                     .commit()
+        }
+
+        sign_out.setOnClickListener{
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this, WelcomeActivity::class.java)
+            startActivity(intent)
         }
 
     }

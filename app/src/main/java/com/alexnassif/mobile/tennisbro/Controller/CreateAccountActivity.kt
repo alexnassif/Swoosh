@@ -1,4 +1,4 @@
-package com.alexnassif.mobile.tennisbro
+package com.alexnassif.mobile.tennisbro.Controller
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -6,9 +6,8 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
-import com.alexnassif.mobile.tennisbro.Controller.LeagueActivity
+import com.alexnassif.mobile.tennisbro.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_create_account.*
 
 class CreateAccountActivity : AppCompatActivity() {
@@ -34,6 +33,7 @@ class CreateAccountActivity : AppCompatActivity() {
                     Toast.makeText(this, "account creation successfull", Toast.LENGTH_LONG).show()
                     val user = mAuth.currentUser
                     val intent = Intent(this, LeagueActivity::class.java)
+                    intent.putExtra("username", usernameText.text.toString())
                     startActivity(intent)
                 }else{
                     Toast.makeText(this, "account creation failed", Toast.LENGTH_LONG).show()

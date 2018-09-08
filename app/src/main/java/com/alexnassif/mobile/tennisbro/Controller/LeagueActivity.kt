@@ -15,10 +15,14 @@ import kotlinx.android.synthetic.main.activity_league.*
 class LeagueActivity : AppCompatActivity() {
 
 
-    var player = Player("", "", "", "")
+    var player = Player("", "", 0.0, 0.0, "")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_league)
+
+        player.name = intent.getStringExtra("username")
+
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {

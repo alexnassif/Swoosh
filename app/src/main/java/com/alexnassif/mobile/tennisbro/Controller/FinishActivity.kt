@@ -22,7 +22,7 @@ class FinishActivity : AppCompatActivity() {
 
         val player = intent.getParcelableExtra<Player>(EXTRA_PLAYER)
 
-        searchLeagueText.text = "creating user for a ${player.league} ${player.skill} ..."
+        searchLeagueText.text = "creating user for a ${player.name} ..."
         progressBar.visibility = View.VISIBLE
         var database = FirebaseDatabase.getInstance()
         val createUserRef = database.getReference("users")

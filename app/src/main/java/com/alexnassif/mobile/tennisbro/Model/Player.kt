@@ -6,19 +6,22 @@ import android.os.Parcelable
 /**
  * Created by raymond on 11/24/17.
  */
-class Player constructor(var league: String, var skill: String, var latitude: String, var longitude: String):Parcelable{
+class Player constructor(var league: String, var skill: String, var latitude: Double, var longitude: Double,
+                         var name: String):Parcelable{
     constructor(parcel: Parcel) : this(
             parcel.readString(),
             parcel.readString(),
-            parcel.readString(),
+            parcel.readDouble(),
+            parcel.readDouble(),
             parcel.readString()) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(league)
         parcel.writeString(skill)
-        parcel.writeString(latitude)
-        parcel.writeString(longitude)
+        parcel.writeDouble(latitude)
+        parcel.writeDouble(longitude)
+        parcel.writeString(name)
     }
 
     override fun describeContents(): Int {

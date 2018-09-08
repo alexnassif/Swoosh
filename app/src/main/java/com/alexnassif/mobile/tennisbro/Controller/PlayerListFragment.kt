@@ -1,4 +1,4 @@
-package com.alexnassif.mobile.tennisbro
+package com.alexnassif.mobile.tennisbro.Controller
 
 
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.alexnassif.mobile.tennisbro.R
 
 
 // TODO: Rename parameter arguments, choose names that match

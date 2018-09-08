@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
-import com.alexnassif.mobile.tennisbro.LocatePlayerMapsActivity
 import com.alexnassif.mobile.tennisbro.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
@@ -36,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {task ->
 
                 if(task.isSuccessful){
-                    val mapIntent = Intent(this, LocatePlayerMapsActivity::class.java)
+                    val mapIntent = Intent(this, ListPlayerMapActivity::class.java)
                     startActivity(mapIntent)
                 }else{
                     Toast.makeText(this, "Authentication failed", Toast.LENGTH_LONG).show()

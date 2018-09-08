@@ -3,9 +3,6 @@ package com.alexnassif.mobile.tennisbro.Controller
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.content.ContextCompat.startActivity
-import com.alexnassif.mobile.tennisbro.CreateAccountActivity
-import com.alexnassif.mobile.tennisbro.LocatePlayerMapsActivity
 
 import com.alexnassif.mobile.tennisbro.R
 import com.google.firebase.auth.FirebaseAuth
