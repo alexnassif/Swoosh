@@ -17,23 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
 
-        <ImageButton
-            android:id="@+id/listBtnToolbar"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:srcCompat="@drawable/baseline_list_white_18dp"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
-
-        <Button
-            android:id="@+id/sign_out"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sign out"
-            tools:layout_editor_absoluteX="256dp"
-            tools:layout_editor_absoluteY="0dp" />
-
-
     </android.support.v7.widget.Toolbar>
 
 
