@@ -3,10 +3,21 @@ package com.alexnassif.mobile.tennisbro.Controller
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.alexnassif.mobile.tennisbro.Adapters.PlayerListAdapter
+import com.alexnassif.mobile.tennisbro.Model.Player
 import com.alexnassif.mobile.tennisbro.R
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.fragment_player_list.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -25,6 +36,8 @@ class PlayerListFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var adapter: PlayerListAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -37,6 +50,47 @@ class PlayerListFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_player_list, container, false)
+    }
+
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        playerRecyclerView.layoutManager = LinearLayoutManager(context)
+
+        adapter = PlayerListAdapter(context!!, mutableListOf()){
+
+        }
+
+        playerRecyclerView.adapter = adapter
+        playerRecyclerView.setHasFixedSize(true)
+
+        val playerList = mutableListOf<Player>()
+        var database = FirebaseDatabase.getInstance()
+        val createUserRef = database.getReference("users")
+
+        createUserRef.addValueEventListener(object: ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                val children = p0!!.children
+
+                children.forEach {
+                    childx ->
+                    val player = childx!!.getValue(Player::class.java)
+                    playerList.add(player!!)
+
+                }
+                Log.d("players", playerList.count().toString())
+                adapter.setList(playerList)
+
+            }
+
+
+        })
+
+
     }
 
 

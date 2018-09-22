@@ -6,8 +6,27 @@ import android.os.Parcelable
 /**
  * Created by raymond on 11/24/17.
  */
-class Player constructor(var league: String, var skill: String, var latitude: Double, var longitude: Double,
-                         var name: String):Parcelable{
+class Player :Parcelable{
+
+    lateinit var league: String
+    lateinit var skill: String
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
+    lateinit var name: String
+
+    constructor(){
+
+    }
+
+    constructor(league: String, skill: String, latitude: Double, longitude: Double,
+                name: String){
+        this.league = league
+        this.skill = skill
+        this.latitude = latitude
+        this.longitude = longitude
+        this.name = name
+    }
+
     constructor(parcel: Parcel) : this(
             parcel.readString(),
             parcel.readString(),
