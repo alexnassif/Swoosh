@@ -13,13 +13,15 @@ import kotlinx.android.synthetic.main.activity_list_player.*
 class ListPlayerMapActivity : AppCompatActivity() {
 
     private lateinit var mapFragment: PlayerListMapFragment
-
+    private lateinit var listFragment: PlayerListFragment
+    private var flag: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_player)
 
         mapFragment = PlayerListMapFragment.newInstance()
+        listFragment = PlayerListFragment()
         setSupportActionBar(findViewById(R.id.map_toolbar))
 
         supportFragmentManager
@@ -42,14 +44,24 @@ class ListPlayerMapActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.map_view_type -> {
 
+            if(flag){
 
-            supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.map_frame, PlayerListFragment())
-                    .commit()
+                supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.map_frame, listFragment)
+                        .commit()
 
+                item.setIcon(R.drawable.profiledefault)
 
+            }else {
+                supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.map_frame, mapFragment)
+                        .commit()
 
+                item.setIcon(R.drawable.baseline_list_white_18dp)
+            }
+            flag = !flag
             true
         }
 
