@@ -14,6 +14,7 @@ class ListPlayerMapActivity : AppCompatActivity() {
 
     private lateinit var mapFragment: PlayerListMapFragment
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_player)
@@ -37,12 +38,18 @@ class ListPlayerMapActivity : AppCompatActivity() {
         return true
     }
 
+
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.map_view_type -> {
+
+
             supportFragmentManager
                     .beginTransaction()
                     .replace(R.id.map_frame, PlayerListFragment())
                     .commit()
+
+
+
             true
         }
 

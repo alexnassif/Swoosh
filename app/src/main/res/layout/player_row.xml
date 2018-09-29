@@ -9,10 +9,10 @@
         android:id="@+id/playerProfilePic"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout"
         app:layout_constraintHorizontal_bias="0.5"
@@ -24,8 +24,8 @@
         android:id="@+id/linearLayout"
         android:layout_width="223dp"
         android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/playerDistance"
@@ -37,13 +37,18 @@
         <TextView
             android:id="@+id/playerName"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="TextView" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/playerSkill"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:text="TextView" />
     </LinearLayout>
 
@@ -51,8 +56,9 @@
         android:id="@+id/playerDistance"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
