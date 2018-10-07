@@ -80,6 +80,9 @@ class PlayerListMapFragment : Fragment() {
                             currentPlayer.latitude = x.child("latitude").value as Double
                             currentPlayer.longitude = x.child("longitude").value as Double
                             currentPlayer.name = x.child("name").value.toString()
+
+                            val me = LatLng(currentPlayer.latitude, currentPlayer.longitude)
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(me, 12.0f))
                         }
 
                         val latitude = x.child("latitude").value
@@ -95,10 +98,9 @@ class PlayerListMapFragment : Fragment() {
             })
 
 
-            val me = LatLng(currentPlayer.latitude, currentPlayer.longitude)
-            mMap.addMarker(MarkerOptions().position(me).title("My Location"))
+
             mMap.uiSettings.isZoomControlsEnabled = true
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(me, 12.0f))
+            
 
 
 
