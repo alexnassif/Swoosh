@@ -6,10 +6,12 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.alexnassif.mobile.tennisbro.Model.Player
 import com.alexnassif.mobile.tennisbro.R
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -28,10 +30,13 @@ class PlayerListMapFragment : Fragment() {
 
     private lateinit var mMap: GoogleMap
     private lateinit var mMapView: MapView
+    private lateinit var currentPlayer: Player
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        currentPlayer = Player()
 
     }
 
@@ -68,6 +73,14 @@ class PlayerListMapFragment : Fragment() {
 
                     children.forEach { x ->
 
+                        if(x.key.equals(FirebaseAuth.getInstance().currentUser!!.uid)) {
+
+                            currentPlayer.league = x.child("league").value.toString()
+                            currentPlayer.skill = x.child("skill").toString()
+                            currentPlayer.latitude = x.child("latitude").value as Double
+                            currentPlayer.longitude = x.child("longitude").value as Double
+                            currentPlayer.name = x.child("name").value.toString()
+                        }
 
                         val latitude = x.child("latitude").value
                         val longitude = x.child("longitude").value
@@ -82,9 +95,10 @@ class PlayerListMapFragment : Fragment() {
             })
 
 
-            val sydney = LatLng(-34.0, 151.0)
-            mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+            val me = LatLng(currentPlayer.latitude, currentPlayer.longitude)
+            mMap.addMarker(MarkerOptions().position(me).title("My Location"))
+            mMap.uiSettings.isZoomControlsEnabled = true
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(me, 12.0f))
 
 
 
