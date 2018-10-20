@@ -2,12 +2,15 @@ package com.alexnassif.mobile.tennisbro.Controller
 
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.alexnassif.mobile.tennisbro.Model.Player
 import com.alexnassif.mobile.tennisbro.R
+import com.alexnassif.mobile.tennisbro.ViewModel.UserViewModel
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
@@ -31,12 +34,15 @@ class PlayerListMapFragment : Fragment() {
     private lateinit var mMap: GoogleMap
     private lateinit var mMapView: MapView
     private lateinit var currentPlayer: Player
+    private lateinit var viewModel: UserViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         currentPlayer = Player()
+
+        viewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
 
     }
 
@@ -50,7 +56,7 @@ class PlayerListMapFragment : Fragment() {
         mMapView.onResume()
 
         try {
-            MapsInitializer.initialize(activity.applicationContext)
+            MapsInitializer.initialize(activity!!.applicationContext)
         }catch (e: Exception){
             e.printStackTrace()
         }
@@ -60,48 +66,38 @@ class PlayerListMapFragment : Fragment() {
 
             // Add a marker in Sydney and move the camera
 
-            var database = FirebaseDatabase.getInstance()
-            val createUserRef = database.getReference("users")
+            viewModel.getUserList().observe(this, Observer {
 
-            createUserRef.addValueEventListener(object: ValueEventListener {
-                override fun onCancelled(p0: DatabaseError) {
+                for(player in it) {
 
+                    val location = LatLng(player.latitude, player.longitude)
+                    mMap.addMarker(MarkerOptions().position(location).title(player.name))
                 }
-
-                override fun onDataChange(p0: DataSnapshot) {
-                    val children = p0!!.children
-
-                    children.forEach { x ->
-
-                        if(x.key.equals(FirebaseAuth.getInstance().currentUser!!.uid)) {
-
-                            currentPlayer.league = x.child("league").value.toString()
-                            currentPlayer.skill = x.child("skill").toString()
-                            currentPlayer.latitude = x.child("latitude").value as Double
-                            currentPlayer.longitude = x.child("longitude").value as Double
-                            currentPlayer.name = x.child("name").value.toString()
-
-                            val me = LatLng(currentPlayer.latitude, currentPlayer.longitude)
-                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(me, 12.0f))
-                        }
-
-                        val latitude = x.child("latitude").value
-                        val longitude = x.child("longitude").value
-
-                        val player = LatLng(latitude as Double, longitude as Double)
-                        mMap.addMarker(MarkerOptions().position(player).title(x.key))
-                    }
-
-                }
-
-
             })
 
 
 
-            mMap.uiSettings.isZoomControlsEnabled = true
-            
 
+            mMap.uiSettings.isZoomControlsEnabled = true
+
+            mMap.setOnCameraIdleListener {
+                val northEast = mMap.projection.visibleRegion.latLngBounds.northeast
+                val southWest = mMap.projection.visibleRegion.latLngBounds.southwest
+
+                /*val searchRef = database.getReference("users")
+
+                searchRef.addValueEventListener(object : ValueEventListener{
+                    override fun onCancelled(p0: DatabaseError) {
+
+                    }
+
+                    override fun onDataChange(p0: DataSnapshot) {
+
+                    }
+
+                })*/
+
+            }
 
 
         }

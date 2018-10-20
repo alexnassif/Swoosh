@@ -1,7 +1,7 @@
 package com.alexnassif.mobile.tennisbro.Controller
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 import com.alexnassif.mobile.tennisbro.R
