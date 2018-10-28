@@ -13,18 +13,20 @@ class Player :Parcelable{
     var latitude: Double = 0.0
     var longitude: Double = 0.0
     lateinit var name: String
+    lateinit var id: String
 
     constructor(){
 
     }
 
     constructor(league: String, skill: String, latitude: Double, longitude: Double,
-                name: String){
+                name: String, id: String){
         this.league = league
         this.skill = skill
         this.latitude = latitude
         this.longitude = longitude
         this.name = name
+        this.id = id
     }
 
     constructor(parcel: Parcel) : this(
@@ -32,6 +34,7 @@ class Player :Parcelable{
             parcel.readString(),
             parcel.readDouble(),
             parcel.readDouble(),
+            parcel.readString(),
             parcel.readString()) {
     }
 
@@ -41,6 +44,7 @@ class Player :Parcelable{
         parcel.writeDouble(latitude)
         parcel.writeDouble(longitude)
         parcel.writeString(name)
+        parcel.writeString(id)
     }
 
     override fun describeContents(): Int {

@@ -24,6 +24,16 @@ object DataService {
 
                 children.forEach { x ->
                     val player = x.getValue(Player::class.java)
+                    player!!.id = x.key.toString()
+
+
+
+                    /**player.name = x.child("name").value.toString()
+                    player.longitude = x.child("longitude").value as Double
+                    player.latitude = x.child("latitude").value as Double
+                    player.skill = x.child("skill").value.toString()
+                    player.league = x.child("league").value.toString()
+                    player.id = x.key.toString()**/
                     listOfUsers.add(player!!)
 
                 }
