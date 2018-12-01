@@ -20,7 +20,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Controller.WelcomeActivity">
+        <activity android:name=".Controller.ListPlayerMapActivity" android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,6 +35,8 @@
         <activity android:name=".Controller.LeagueActivity" />
         <activity android:name=".Controller.SkillActivity" />
         <activity android:name=".Controller.FinishActivity" />
+        <activity android:name=".Controller.WelcomeActivity" />
+
         <activity
             android:name=".Controller.LocatePlayerMapsActivity"
             android:label="@string/title_activity_locate_player_maps" />
@@ -55,9 +57,7 @@
             android:name=".Controller.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".Controller.CreateAccountActivity" />
-        <activity
-            android:name=".Controller.ListPlayerMapActivity"
-            android:label="@string/title_activity_list_player_map"></activity>
+
     </application>
 
 </manifest>

@@ -19,6 +19,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         mAuth = FirebaseAuth.getInstance()
+
     }
 
 
@@ -35,8 +36,10 @@ class LoginActivity : AppCompatActivity() {
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {task ->
 
                 if(task.isSuccessful){
-                    val mapIntent = Intent(this, ListPlayerMapActivity::class.java)
-                    startActivity(mapIntent)
+                    val restartIntent = baseContext.packageManager.getLaunchIntentForPackage(baseContext.packageName)
+                    restartIntent!!.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    restartIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    startActivity(restartIntent)
                 }else{
                     Toast.makeText(this, "Authentication failed", Toast.LENGTH_LONG).show()
                 }

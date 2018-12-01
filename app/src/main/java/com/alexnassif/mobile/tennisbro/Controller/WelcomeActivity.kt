@@ -14,9 +14,6 @@ class WelcomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
-
-        mAuth = FirebaseAuth.getInstance()
-
         getStartedButton.setOnClickListener {
             val createAccountIntent = Intent(this, CreateAccountActivity::class.java)
             startActivity(createAccountIntent)
@@ -27,20 +24,17 @@ class WelcomeActivity : AppCompatActivity() {
             startActivity(loginIntent)
         }
 
+
     }
 
     override fun onStart() {
         super.onStart()
 
-        if(mAuth.currentUser != null){
-            val mapIntent = Intent(this, ListPlayerMapActivity::class.java)
-            startActivity(mapIntent)
-        }
+
     }
 
     override fun onDestroy() {
         super.onDestroy()
 
-        FirebaseAuth.getInstance().signOut()
     }
 }

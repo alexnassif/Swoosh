@@ -1,5 +1,6 @@
 package com.alexnassif.mobile.tennisbro.Controller
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,30 +10,42 @@ import com.alexnassif.mobile.tennisbro.R
 import com.alexnassif.mobile.tennisbro.R.id.sign_out
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_list_player.*
+import kotlinx.android.synthetic.main.activity_welcome.*
 
 class ListPlayerMapActivity : AppCompatActivity() {
 
     private lateinit var mapFragment: PlayerListMapFragment
     private lateinit var listFragment: PlayerListFragment
     private var flag: Boolean = true
+    private lateinit var mAuth: FirebaseAuth
+    private lateinit var welcomeIntent: Intent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_player)
 
-        mapFragment = PlayerListMapFragment.newInstance()
-        listFragment = PlayerListFragment()
-        setSupportActionBar(findViewById(R.id.map_toolbar))
+        mAuth = FirebaseAuth.getInstance()
 
-        supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.map_frame, mapFragment)
-                .commit()
+        if(mAuth.currentUser != null) {
+            setContentView(R.layout.activity_list_player)
+
+            mapFragment = PlayerListMapFragment.newInstance()
+            listFragment = PlayerListFragment()
+            setSupportActionBar(findViewById(R.id.map_toolbar))
+
+            supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.map_frame, mapFragment)
+                    .commit()
+        }else{
+            welcomeIntent = Intent(this, WelcomeActivity::class.java)
+            startActivity(welcomeIntent)
+        }
 
 
 
 
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
@@ -67,8 +80,10 @@ class ListPlayerMapActivity : AppCompatActivity() {
 
         R.id.sign_out -> {
             FirebaseAuth.getInstance().signOut()
-            val intent = Intent(this, WelcomeActivity::class.java)
-            startActivity(intent)
+            val restartIntent = baseContext.packageManager.getLaunchIntentForPackage(baseContext.packageName)
+            restartIntent!!.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            restartIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(restartIntent)
             true
         }
 
@@ -77,5 +92,9 @@ class ListPlayerMapActivity : AppCompatActivity() {
             // Invoke the superclass to handle it.
             super.onOptionsItemSelected(item)
         }
+    }
+
+    companion object {
+        const val LOGIN_REQUEST = 1
     }
 }
