@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.Toolbar
 import com.alexnassif.mobile.tennisbro.R
 import com.alexnassif.mobile.tennisbro.R.id.sign_out
 import com.google.firebase.auth.FirebaseAuth
@@ -16,29 +18,36 @@ class ListPlayerMapActivity : AppCompatActivity() {
 
     private lateinit var mapFragment: PlayerListMapFragment
     private lateinit var listFragment: PlayerListFragment
+    private lateinit var welcomeFragment: WelcomeFragment
     private var flag: Boolean = true
     private lateinit var mAuth: FirebaseAuth
     private lateinit var welcomeIntent: Intent
+    private lateinit var toolbar: androidx.appcompat.widget.Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_list_player)
 
         mAuth = FirebaseAuth.getInstance()
 
         if(mAuth.currentUser != null) {
-            setContentView(R.layout.activity_list_player)
-
+            toolbar = findViewById(R.id.map_toolbar)
+            toolbar.visibility = View.VISIBLE
             mapFragment = PlayerListMapFragment.newInstance()
             listFragment = PlayerListFragment()
-            setSupportActionBar(findViewById(R.id.map_toolbar))
+            setSupportActionBar(toolbar)
 
             supportFragmentManager
                     .beginTransaction()
                     .replace(R.id.map_frame, mapFragment)
                     .commit()
         }else{
-            welcomeIntent = Intent(this, WelcomeActivity::class.java)
-            startActivity(welcomeIntent)
+            welcomeFragment = WelcomeFragment.newInstance()
+            supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.map_frame, welcomeFragment)
+                    .commit()
+
         }
 
 

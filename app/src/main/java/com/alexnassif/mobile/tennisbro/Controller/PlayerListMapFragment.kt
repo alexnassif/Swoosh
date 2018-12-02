@@ -47,7 +47,7 @@ class PlayerListMapFragment : Fragment() {
         }catch (e: Exception){
             e.printStackTrace()
         }
-
+        
         mMapView.getMapAsync {
             mMap = it
 
