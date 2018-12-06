@@ -30,7 +30,7 @@ class CreateAccountActivity : AppCompatActivity() {
 
                 if(task.isSuccessful){
                     createAccountSpinner.visibility = View.INVISIBLE
-                    Toast.makeText(this, "account creation successfull", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "account creation successful", Toast.LENGTH_LONG).show()
                     val user = mAuth.currentUser
                     val intent = Intent(this, LeagueActivity::class.java)
                     intent.putExtra("username", usernameText.text.toString())

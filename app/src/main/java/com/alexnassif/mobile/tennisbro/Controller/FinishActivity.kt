@@ -32,8 +32,10 @@ class FinishActivity : AppCompatActivity() {
                 if (p0 == null) {
                     progressBar.visibility = View.INVISIBLE
                     searchLeagueText.text = "user created"
-                    val listPlayersIntent = Intent(applicationContext, ListPlayerMapActivity::class.java)
-                    startActivity(listPlayersIntent)
+                    val restartIntent = baseContext.packageManager.getLaunchIntentForPackage(baseContext.packageName)
+                    restartIntent!!.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    restartIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    startActivity(restartIntent)
 
                 }else{
                     searchLeagueText.text = "error"

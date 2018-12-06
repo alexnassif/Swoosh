@@ -39,9 +39,7 @@ class LocatePlayerMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         //setUpMap()
     }
-    fun clickBall(view: View){
-        FirebaseAuth.getInstance().signOut()
-    }
+
     fun getLocationBtn(view: View){
 
         val intent = Intent();

@@ -18,6 +18,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 class PlayerListMapFragment : Fragment() {
 
+
     private lateinit var mMap: GoogleMap
     private lateinit var mMapView: MapView
     private lateinit var currentPlayer: Player
@@ -47,7 +48,7 @@ class PlayerListMapFragment : Fragment() {
         }catch (e: Exception){
             e.printStackTrace()
         }
-        
+
         mMapView.getMapAsync {
             mMap = it
 

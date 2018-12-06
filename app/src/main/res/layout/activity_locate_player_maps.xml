@@ -22,7 +22,6 @@
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="clickBall"
         android:visibility="visible"
         map:layout_constraintBottom_toTopOf="@+id/map"
         map:layout_constraintEnd_toStartOf="@+id/map"
@@ -35,18 +34,18 @@
         android:id="@+id/getLocation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/swoosh_button_checked"
         android:fontFamily="@font/montserrat"
         android:onClick="getLocationBtn"
         android:text="Set Location"
         android:textColor="@android:color/white"
-        map:layout_constraintBottom_toBottomOf="@+id/map"
         map:layout_constraintEnd_toEndOf="parent"
         map:layout_constraintHorizontal_bias="0.0"
-        map:layout_constraintStart_toStartOf="parent" />
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="@+id/map" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
